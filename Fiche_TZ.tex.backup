@@ -1,0 +1,61 @@
+\documentclass[pdftex,11pt,a4paper,twoside]{report}
+
+\usepackage{pdf_course_profile}
+
+%\title{Cours d'électricité}
+
+\title{\begin{flushright}
+    \rule{17cm}{1mm}\\
+    \vspace{8mm}
+    \huge{\bf{Traitement du signal}}\\
+	\vspace{4mm}
+    \rule{17cm}{1mm}\\
+    \large{Cours du CNAM - CPDA - 2006}\\
+    \large{modifié le }\today\\
+    \large{Version 0.3.2}
+    \end{flushright}
+}
+
+\author{\begin{flushright}
+	\textbf{Guillaume Pellerin$^1$ et Maëva Garnier$^2$}\\
+	\end{flushright}
+    \vspace{10cm}
+	\begin{center}
+    \small{
+    $^1$ Laboratoire d'Acoustique, Conservatoire National des Arts et Métiers\\
+    5 rue du Vert Bois F-75003 Paris\\ <\href{mailto:guillaume.pellerin@cnam.fr}{guillaume.pellerin@cnam.fr}>\\
+     \vspace{0.5cm}
+    %$^2$ Equipe design sonore - IRCAM\\ 1 place Igor-Stravinsky F-75004 Paris\\ <\href{mailto:Nicolas.Misdariis@ircam.fr}{Nicolas.Misdariis@ircam.fr}>\\
+    % \vspace{0.5cm}
+    $^2$ Equipe Lutherie, Acoustique et Musique, Institut Jean Le Rond d'Alembert,\\
+    Universit\'{e} Pierre et Marie Curie, 11 rue de Lourmel F-75015 Paris\\ <\href{mailto:garnier@lam.jussieu.fr}{garnier@lam.jussieu.fr}>
+    }
+    \end{center}}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\include{Abstract}
+
+\tableofcontents
+\cleardoublepage
+\renewcommand{\labelitemi}{$\bullet$}
+
+\chapter{Introduction aux méthodes fréquentielles de traitement du signal}
+\input{IntroMethFreq}
+
+\chapter{Systèmes linéaires et filtrage}
+\input{SystLinFilt}
+
+\chapter{Modes de représentation des signaux}
+\input{ReprSignaux}
+
+\newpage
+\bibliographystyle{plain}
+\nocite{*}
+\bibliography{biblio}
+
+\end{document}
+

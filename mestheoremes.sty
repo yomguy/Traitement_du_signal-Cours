@@ -1,0 +1,36 @@
+\usepackage{amsthm}
+
+\newtheoremstyle{note}  % nom
+{16pt} % espace avant
+{8pt} % espace après
+{\itshape} % body font
+{} % Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries} % note head font
+{~:} % punctuation après note head
+{ } % espace après note head " " = normal interword space ; \newline = linebreak
+{} % note head spec (can be left empty, meaning 'normal')
+
+\theoremstyle{note}
+\newtheorem{note}{Note}
+
+\newtheoremstyle{break}
+{16pt} 	% espace avant
+{8pt}	% espace après
+{}	% body font
+{}		% indent amount (empty=no indent,\parindent=para indent)
+{\bfseries}	% break header font
+{~:}	% ponctuation
+{ }	% Space après head : \newline = \linebreak
+{}		% break head spec
+
+\theoremstyle{break}
+\newtheorem*{bnotes}{Notes}
+\newtheorem{bex}{Exemple}
+\newtheorem*{brems}{Remarques}
+\newtheorem*{bdefis}{Définitions}   % l'étoile supprime la numérotation
+\newtheorem*{bnote}{Note}           % idem 
+\newtheorem*{rem}{Remarque}      % idem 
+
+\theoremstyle{note}
+\newtheorem*{defi}{Définition}   % l'étoile supprime la numérotation
+\newtheorem*{enon}{Enoncé}      % idem 

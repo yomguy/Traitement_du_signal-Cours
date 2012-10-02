@@ -1,0 +1,150 @@
+\section{Préambule}
+
+L'information, qui se présente à nous lors de l'observation d'un phénomène, se manifeste sous forme d'une ou plusieurs grandeurs physiques qui se déroulent à la fois dans le temps et dans l'espace. Dans les problèmes rencontrés en pratique, on est souvent amené à s'intéresser plus particulièrement à l'un ou l'autre de ces deux aspects. On désigne alors par le terme de \textbf{signal} l'évolution temporelle, tandis que l'on désigne par le terme d'\textbf{image} l'évolution spatiale.
+
+Les différentes opérations que l'on fait subir aux signaux nécessitent des outils mathématiques appropriés qui sont à la base du traitement du signal. Dans ce cours nous envisageons l'étude de certains de ces outils. La théorie du signal propose de modéliser la grandeur physique observée par un objet mathématique dépendant de la variable réelle $t$ représentant le temps. Dans la suite, le  signal désignera indifféremment la grandeur physique observée ou l'objet mathématique servant à la modéliser. Le figure \ref{ex_sig} donne un aperçu de la représentation temporelle de la forme d'onde d'un signal musical.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{img/ex_sig}
+    \caption{Exemple d'une réprésentation temporelle d'un signal musical combinant un son de grosse caisse et celui d'une caisse claire.}
+    \label{ex_sig}
+\end{figure}
+
+
+\section{Classification des signaux}
+
+En théorie du signal, on a l'habitude d'envisager plusieurs types de signaux. Pour rendre la suite de ce cours plus compréhensible, nous présentons dans cette section les différents modes de classification des signaux.
+
+\subsection{Classification dimensionnelle}
+
+On peut différentier les signaux selon leur nombre de variables libres. Par exemple un signal électrique $V(t)$ est un signal unidimensionnel dépendant du temps. Une image statique en noir et blanc peut être modélisée par un signal bidimensionnel correspondant à la brillance en fonction de la largeur et de la hauteur de l'image. Enfin, un film en noir et blanc peut être considéré comme une image fonction du temps, autrement dit modélisé par un signal tridimensionnel dépendant de l'abscisse et de l'ordonnée de l'image mais également du temps.
+
+\subsection{Classification phénoménologique}
+
+La première distinction porte sur notre capacité à prédire l'évolution temporelle de la grandeur observée. Dans le cas d'un oscillateur sinusoïdal d'amplitude $A$ et de fréquence $f_0$ par exemple, moyennant la mesure de $A$ et de $f_0$, on peut prédire la valeur de l'amplitude, à tout instant, par l'expression $x(t) = A\cos(2 \pi f_0 t)$. Un tel modèle de signal est dit \textbf{déterministe}. Il existe cependant des situations où il n'est pas concevable d'expliciter, de cette façon, la forme de l'évolution temporelle du signal. C'est le cas, par exemple, pour la tension engendrée à la sortie d'un microphone ou encore pour le courant électrique produit par l'agitation thermique des particules dans un conducteur (bruit de fond). On ne peut pas dire avec certitude combien vaudra $x(t)$ à l'instant $t$, mais on pourra éventuellement supposer que cette grandeur est distribuée suivant une certaine loi de probabilité. On dit alors que le signal est \textbf{aléatoire}.
+
+Pour simplifier, on peut dire que les signaux déterministes sont des cas relativement théoriques et idéaux, ou bien modélisent des signaux observés expérimentalement. Car en fait, tout signal physique réel comporte une composante aléatoire correspondant à la perturbation externe.
+
+\subsection{Classification morphologique}
+
+Si, comme c'est le cas pour le signal $x(t) = Acos(2\pi f_0 t)$, où $t\in\mathbb{R}$ et $A\in\mathbb{R}$, on dit que le signal est à temps continu. Toutefois on rencontre aussi en traitement du signal des grandeurs qui évoluent uniquement à des instants discrets $t_n$ où $n$ est un entier. On parle alors de signal à temps discret ou encore de signal numérique. En terme mathématique, un signal à temps continu est une fonction du temps tandis qu'un signal à temps discret est une suite. Le développement et l'essor des techniques numériques ont fait que les problèmes portant sur le traitements des signaux à temps discret ont pris une place majeure aujourd'hui, comparée à celle qu'occupent les traitements portant sur les signaux à temps continu. C'est pourquoi ce cours est centre avant tout sur les problèmes de temps discret et sur le passage du temps continu au temps discret (principe de l'échantillonnage).
+
+Il est également possible de discrétiser le signal en amplitude. On appelle cela la \textbf{quantification} du signal.
+
+\newpage
+\subsection{Classification énergétique}
+
+On distingue en particulier deux types de signaux :
+
+\begin{itemize}
+\item les signaux à énergie finie comme tous les signaux physiques,
+\item les signaux à puissance moyenne finie comme par exemple un signal sinusoïdal.
+\end{itemize}
+
+
+\section{Signaux et distributions classiques}
+
+\subsection{Fenêtre rectangulaire ou Porte}
+
+Soit $t \in \mathbb{R}$. Un signal rectangulaire s'écrit :
+
+\begin{equation}
+\boxed{\Pi_{2a}(t)}
+\end{equation}
+
+La représentation graphique d'un signal porte est donnée à la figure \ref{sig_porte}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{img/sig_porte}
+    \caption{Réprésentation temporelle d'un signal rectangulaire ou << porte >>.}
+    \label{sig_porte}
+\end{figure}
+
+
+\subsection{Impulsion de Dirac}
+
+Les propriétés de l'impulsion de Dirac sont identiques à celles d'un signal rectangulaire dont la largeur tend vers 0 et la hauteur vers l'infini, à surface constante. Soit $t \in \mathbb{R}$ et $t_0 \in \mathbb{R}$. L'impulsion située au temps $t_0$ s'écrit :
+
+\begin{equation}
+\boxed{\delta(t-t_0)}
+\end{equation}
+
+Il est souvent utilisé pour déterminer la réponse impulsionnelle d'un système dynamique. Une représentation est donnée à la figure \ref{sig_dirac}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{img/sig_dirac}
+    \caption{Réprésentation temporelle d'une impulsion de Dirac.}
+    \label{sig_dirac}
+\end{figure}
+
+\subsection{<< Peigne >> de Dirac}
+Soit $T$ une période en secondes, $t\in\mathbb{R}$, et $i\in\mathbb{N}$ et $n\in\mathbb{N}$. Le peigne de Dirac correspond à une périodisation d'impulsions de Dirac tous les $iT$ sur tout l'axe temporel (aussi bien $t<0$  que $t> 0$). Il s'écrit :
+
+\begin{equation}
+\boxed{\Psi_T(t) = \sum_{i=-\infty}^{+\infty} \delta (t-iT)}
+\end{equation}
+
+Une représentation dun peigne de Dirac est donnée à la figure \ref{sig_peigne}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{img/sig_train_dirac}
+    \caption{Réprésentation temporelle d'un peigne de Dirac.}
+    \label{sig_peigne}
+\end{figure}
+
+
+\subsection{Sinus cardinal}
+
+Soit $t \in \mathbb{R}\backslash \lbrace 0 \rbrace$. Le sinus cardinal se définit par la formule :
+
+\begin{equation}
+\boxed{\mathrm{sinc} (t) = \frac{\sin(t)}{t}}
+\end{equation}
+
+Une représentation est donnée à la figure \ref{sin_card}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{img/sinc}
+    \caption{Réprésentation temporelle du sinus cardinal : $y=\frac{\sin(x)}{x}$ ($x\texttt{} \in \mathbb{R}\backslash \lbrace 0 \rbrace$).}
+    \label{sin_card}
+\end{figure}
+
+\section{Evaluation de la similitude entre deux signaux}
+
+Il existe en traitement du signal des outils mathématiques qui permettent d'évaluer la similitude entre deux signaux :
+
+\begin{itemize}
+\item au niveau de leur évolution temporelle grâce  à la fonction d'inter ou d'auto-corrélation.
+\item au niveau de leur composition spectrale grâce à la fonction de densité spectrale.
+\end{itemize}
+
+
+\subsection{Les fonctions d'inter-corrélation et d'auto-corrélation}\label{intercorr}
+
+La fonction d'\textbf{intercorrélation} donne une quantité liée à la similitude entre deux signaux. Elle se définit par la formule suivante :
+
+\begin{equation}\label{inter_cor}
+\varphi_{xy}(\tau)=\int_{-\infty}^{+\infty}x^*(t) y(t+\tau) \ud t
+\end{equation}
+
+où $x^*(t)$ est le conjugué de $x(t)$. Cette fonction renvoie un maximum lorsque les deux fonctions deviennent les plus similaires à t donnée. La fonction d'\textbf{autocorrélation} est un cas particulier de la fonction d'intercorrélation pour laquelle $y(t) = x(t)$. Elle s'écrit donc :
+
+\begin{equation}\label{auto_cor}
+\varphi_{x}(\tau)=\int_{-\infty}^{+\infty}x^*(t) x(t+\tau) \ud t
+\end{equation}
+
+La fonction d'autocorrélation mesure ainsi la similitude de $x(t)$ avec une version décallée de $x(t)$. Elle atteint un maximum pour le temps $t_0$ auquel $x(t-t_0)$ ressemble le plus à $x(t)$.  C'est le cas particulièrement pour les signaux périodiques qui reprennent la même valeur à chaque période $T$. La fonction d'autocorrélation permet ainsi d'estimer la périodicité d'un signal semi-périodique en repérant le temps pour lequel elle atteint son maximum.
+
+La fonction d'autocorrélation permet également de calculer l'énergie du signal puisque:
+
+\begin{equation}\label{inter_cor2}
+\varphi_{x}(0)=\int_{-\infty}^{+\infty} \vert x(t) \vert ^2 \ud t = E
+\end{equation}
+
+
+

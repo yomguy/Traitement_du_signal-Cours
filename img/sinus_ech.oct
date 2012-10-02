@@ -1,0 +1,13 @@
+#premier test octave
+
+t=[0:1/10000:1];
+x=sin(2*pi*50*t);
+y=sin(2*pi*100*t);
+
+plot(t, x , '-;sin(2*pi*50t);', t, y, '.@;sin(2*pi*100*t);');
+
+axis([0,0.1,-1.2,1.2]);
+xlabel('Temps (s)');
+ylabel('Amplitude');
+print('./sinus_ech.eps', '-deps');
+

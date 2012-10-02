@@ -1,0 +1,145 @@
+\usepackage{times}
+\usepackage{mltex}
+\usepackage{amssymb}
+\usepackage[francais]{babel}
+\usepackage[centertags]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{newlfont}
+%\usepackage{xthesis} %DAL Thesis Style
+%\usepackage{xtocinc} %Include Table of Contents as the first entry in TOC
+%                     Faculty of Grad Studies insists on this!?
+%\usepackage[active]{srcltx}  %SRC Specials for DVI search
+\usepackage[latin1]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{multicol}
+\usepackage{floatflt}
+
+ \usepackage[body={17cm, 27cm},left=2cm,right=2cm,top=2.5cm]{geometry}
+
+
+\usepackage{makeidx,xspace}
+\usepackage[pdftex,bookmarksopen,bookmarksnumbered,colorlinks,pagebackref,breaklinks,citecolor={blue},linkcolor={black}]{hyperref}
+%\usepackage[bookmarksopen,colorlinks,pagebackref,linktocpage]{hyperref}
+%\usepackage[monochrome]{color}
+%\definecolor{links}{rgb}{0.2116,0.0104,0.7716} % BlueViolet
+%\def\LinkColor{links}
+%\definecolor{anchors}{rgb}{0.5812,0.0665,0.0659} % IndianRed
+%\def\AnchorColor{anchors}
+
+%\makeatletter
+%\def\@seccntformat#1{\llap{\hbox to 2em{\hss\expandafter\upshape\csname
+%       the#1\endcsname.\hspace*{6pt}}}}%
+%\makeatother
+
+\usepackage{url}
+\urlstyle{small}
+
+\renewcommand{\labelitemi}{--}
+\newcommand\address[1]{}
+\newcommand\netaddress[1]{}
+\usepackage{shortvrb}
+\MakeShortVerb{\|}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\Lopt}[1]{\textsf{#1}}
+\newcommand{\babel}{\textsf{babel}}
+\makeatletter
+
+\selectlanguage{french}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue \fi
+%
+%\ifpdf
+\usepackage[pdftex]{graphicx}
+%\else
+%\usepackage{graphicx}
+%\fi
+
+
+
+% Fuzz -------------------------------------------------------------------
+\hfuzz2pt % Don't bother to report over-full boxes if over-edge is < 2pt
+
+% Line spacing -----------------------------------------------------------
+\newlength{\defbaselineskip}
+\setlength{\defbaselineskip}{\baselineskip}
+\newcommand{\setlinespacing}[1]%
+           {\setlength{\baselineskip}{#1 \defbaselineskip}}
+\newcommand{\doublespacing}{\setlength{\baselineskip}%
+                           {2.0 \defbaselineskip}}
+\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
+
+% MATH -------------------------------------------------------------------
+\newcommand{\A}{{\cal A}}
+\newcommand{\h}{{\cal H}}
+\newcommand{\s}{{\cal S}}
+\newcommand{\W}{{\cal W}}
+\newcommand{\BH}{\mathbf B(\cal H)}
+\newcommand{\KH}{\cal  K(\cal H)}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\Complex}{\mathbb C}
+\newcommand{\Field}{\mathbb F}
+\newcommand{\RPlus}{[0,\infty)}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\essnorm}[1]{\norm{#1}_{\text{\rm\normalshape ess}}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\seq}[1]{\left<#1\right>}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\RE}{\operatorname{Re}}
+\newcommand{\IM}{\operatorname{Im}}
+\newcommand{\Poly}{{\cal{P}}(E)}
+\newcommand{\EssD}{{\cal{D}}}
+
+% THEOREMS ---------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}[section]
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+%%% ----------------------------------------------------------------------
+% spécification de la mise en page
+%\setlength{\tclineskip}{1.05\baselineskip}
+\voffset=0cm \hoffset=0cm \headheight=0cm \headsep=0cm
+\footskip=0cm \pagestyle{empty}
+
+\renewcommand{\labelitemi}{--}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+
+%\setlength{\parskip}{0cm plus4mm minus3mm}
+
+%-------------------------------------------------------------
+% GRAPHICS
+\graphicspath{{figures/}}
+
+\setcounter{section}{0}
+
+\setcounter{tocdepth}{5}
+
+%\ifpdf
+\DeclareGraphicsExtensions{.pdf,.jpg,.tif,.png}
+%\else
+%\DeclareGraphicsExtensions{.eps, .jpg}
+%\fi

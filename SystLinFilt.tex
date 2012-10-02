@@ -1,0 +1,277 @@
+\section{Introduction}
+
+Pour modifier l'évolution temporelle ou fréquentielle d'un signal déterminé, on a généralement recours à des \textit{fonctions} temporelles ou fréquentielles qui s'appliquent aux valeurs du signal. Ces fonctions peuvent être regroupées au sein d'un système filtrant $\mathbb{S}$ nommé \textit{filtre} délivrant un signal $y(t)$ en réponse à une stimulation  $x(t)$. On peut donc écrire, si $S$ est la fonction du filtre :
+
+\begin{equation}
+ y(t)=S[x(t)]
+\end{equation}
+
+D'un point de vue très général, on peut considérer que tout signal transitant dans une chaîne de transmission est soumis à une opération de filtrage. Voici quelques exemples de filtres :
+
+\begin{itemize}
+ \item un système de mesure conçu pour détecter la présence d'un signal de forme particulière,
+ \item un filtre électronique, un amplificateur, un convertisseur A/D,
+ \item un algorithme informatique agissant sur un signal numérique.
+\end{itemize}
+
+Le présent chapitre constitue une synthèse de la théorie des filtres analogiques et numériques qui tente de donner les éléments de description des transformations temporelles ou fréquentielles - comme par exemple la réponse impulsionnelle - qu'opère $\mathbb{S}$ sur les signaux réels. L'objectif est également de comprendre les méthode de conception de la fonction de filtrage $S$ pour réaliser une opération particulière. Enfin, il sera donné quelques méthodes pour déterminer les propriétés de la fonction $S$ en observant les réponses du système à des simulations extérieures.
+
+
+\section{Réponse impulsionnelle d'un système}
+
+Il est possible de décrire un système $\mathbb{S}$ par l'intermédiaire de sa réponse à des signaux particulier. Mathématiquement, une méthode efficace est de déterminer la réponse de $\mathbb{S}$ à une impulsion de Dirac, \cad une la \textbf{réponse impulsionnelle} telle que :
+
+\begin{equation}
+ s_{\delta}(t) = S(\delta(t))
+\end{equation}
+
+Le signal $s_{\delta}(t)$ récupéré constitue une signature caractéristique du filtre. En effet, la transformée de Fourier d'une impulsion étant une constante (dans le l'espace des fréquences) la transformée de Fourier de la réponse impusionnelle donne la réponse fréquentielle du filtre pour toutes les fréquences. Ainsi, il est possible de mesurer rapidement le comportement de n'importe quel filtre. La réponse d'une salle acoustique, par exemple, peut être évaluée avec un explosif ou un autre son bref.
+
+Dans la nature, tous les signaux sont \textbf{causaux}, \cad que les éléments du signal $y(t)$ ne peuvent exister avant ceux de $x(y)$. En d'autres termes, la causalité impose qu'un signal ne peut précéder celui qui lui a donner naissance\footnote{En mathématique, il est possible de définir des filtres non-causaux, mais cela n'est pas l'objet ici.}. Ainsi les système causaux ont une réponse impulsionnelle nulle avant l'instant d'impulsion, soit $y(t<0) = 0$. Par ailleurs, pour un système causal, le signal de sortie à l'instant $t$ dépend du signal d'entrée aux instants $t'< t$. La durée de la réponse impulsionnelle $s_{\delta}(t)$ correspond au temps de réponse du système.
+
+Une fois la réponse impulsionnelle connue, on peut prédire la réponse du filtre $y(t)$ issue de n'importe quel signal d'entrée $x(t)$ grâce au produit de convolution :
+
+\begin{equation}
+y(t) = x(t) \star s_{\delta}(t)
+\end{equation}
+
+
+\section{Réponse fréquentielle d'un système}
+
+La réponse en fréquence d'un système correspond à la transformée de Fourier de la réponse impulsionnelle du système.
+
+$G(f)$ décrit comment la distribution spectrale d'un signal est modifiée ou "filtrée" par le système $\mathbb{S}$. Il est important de noter que le système peut seulement modifier des composantes spectrales mais ne peut en aucun cas en créer de nouvelles. $\vert G(f) \vert$  est le gain du système, c'est à dire la façon dont il modifie les amplitudes de chaque composantes spectrales. $Arg[G(f)]$ représente le déphasage causé par le système, c'est à dire le << retard >> ou l'<< avance >> qu'il impose à certaines composantes spectrales.
+
+La réponse en fréquence, comme la réponse impulsionnelle permet de décrire complètement le système et de prédire la réponse du système à n'importe quelle entrée. Nous retrouvons l'équivalence entre le produit de convolution dans le domaine temporel et le produit scalire dans le domaine fréquentiel :
+
+\begin{equation}
+y(t) = x(t) \star g(t) \Leftrightarrow Y(f)  = X(f) . G(f)
+\end{equation}
+
+Ainsi, la fonction de transfert $G(f)$ d'un système constitue le rapport entre signal reçu et le signal émis dans le domaine fréquentiel tel que :
+
+\begin{equation}
+ G(f) = \frac{Y(f)}{X(f)}
+\end{equation}
+
+
+\section{Filtrage}
+
+Le filtrage linéaire est une opération utile pour sélectionner une partie du spectre d'un signal ou en atténuer une partie, pour
+modifier le contenu spectral d'un signal  ou encore modéliser la transformation d'un signal dans un conduit propagatif, dans une salle.
+
+Pour tous les filtres, on peut déterminer une fonction de transfert égale au rapport entre spectre du signal de sortie et celui du signal d'entrée :
+
+\begin{equation}
+ G(f) = \frac{Y(f)}{X(f)}
+\end{equation}
+
+Cette fonction de transfert peut aussi s'écrire dans l'<< espace Z >> :
+
+\begin{equation}
+ G(z) = \frac{Y(z)}{X(z)}
+\end{equation}
+
+Ainsi la connaissance de la fonction de transfert d'un filtre nous renseigne complètement sur sa nature, quelque soit l'espace de représentation. La fonction de transfert d'un filtre numérique est donc définie comme la transformée en $Z$ de la réponse impulsionnelle du filtre.
+
+Nous n'aborderons pas dans ce cours la description de la transformée de Laplace\footnote{\url{http://fr.wikipedia.org/wiki/Transformée_de_Laplace}} qui est le pendant de la transformée en Z dans le domaine analogique, c'est-à-dire temps continu. Mais il est essentiel de bien la connaître pour concevoir des filtres analogiques.
+
+\subsection{Filtres classiques - vocabulaire}
+
+On définit ici 4 types de filtres les plus classiques :
+
+\begin{itemize}
+\item les filtres \textbf{passe-bas} qui laissent intact les basses fréquences d'un signal et en atténuent les hautes fréquences,
+\item les filtres \textbf{passe-haut} qui laissent intact les hautes fréquences d'un signal et en atténuent les basses fréquences,
+\item les filtres \textbf{passe-bande} qui sélectionnent une partie du spectre d'un signal autour d'une fréquence spécifiée, avec une largeur plus ou moins grande,
+\item les filtres \textbf{coupe-bande}, qui atténuent fortement une partie du spectre d'un signal autour d'une fréquence spécifiée, avec une largeur plus ou moins grande.                                                                                                                     \end{itemize}
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=8cm]{img/filtres_ideaux}
+    \caption{Les filtres classiques. L'axe horizontal représente la dimension fréquentielle, l'axe vertical le module de la fonction de filtrage $|G(f)|$.}
+    \label{filtres_ideaux}
+\end{figure}
+
+Pour tous ces filtres, on définit des \textbf{fréquences de coupure}, c'est à dire les fréquences pour lesquelles le spectre du signal d'entrée va être atténué d'un facteur $\sqrt{2}$ par rapport à la valeur maximale du spectre d'amplitude. Cette variation équivaut à une variation de 3 dB dans l'échelle logarithmique.
+
+Le filtre  passe-bas à donc une fréquence de coupure dans les médiums / hautes fréquences, le passe haut une fréquence de coupure dans les médiums / basses fréquences. Les passe bande et coupe bande possèdent deux fréquences de coupure autour de la fréquence centrale sur laquelle ils se centrent. On spécifie également la pente de l'atténuation de ces filtres, en dB par octave qui apporte une information sur la \textbf{sélectivité} du filtre. Enfin, pour les filtres passe-bande et coupe-bande, on détermine leur largeur de bande, c'est à dire la différence entre leurs deux fréquences de coupure qui renseigne aussi sur sa sélectivité.
+
+\subsection{Filtres numériques}
+
+Avant de déterminer sa fonction de transfert, un filtre numérique peut-être défini par une équation aux différences, c'est-à-dire l'opération mathématique du filtre dans le domaine temporel discret entre le signal d'entrée $x(n)$ quelconque et le signal filtré de sortie $y(n)$. D'un point de vue général, en respectant le principe de causalité, tout signal filtré $y(n)$ s'écrit comme un composition linéaire des échantillons passés de $x(n)$ et $y(n)$ tel que :
+
+\begin{equation}
+y(n) = {\sum_{k=0}^N} b_k  x(n-k) - {\sum_{k=1}^M} a_k y(n-k)\end{equation}
+
+En calculant les transformée en Z de chaque membre, on calcule aisément la fonction de transfert $H(z)$ dans le domaine z :
+
+\begin{equation}
+H(z) = \frac {Y(z)} {X(z)} = \frac {{\sum_{k=0}^N} b_k z^{-k}} {1 + {\sum_{k=1}^M} a_k z^{-k}}
+\end{equation}
+
+Les valeurs des coefficients $a_k$ et $b_k$ fixeront le type de filtre (passe-bas, passe-haut, et...).
+
+
+\subsection{Exemples de filtres}
+
+\subsubsection{Le filtre moyenneur lisseur}
+
+Soit un signal numérique $y(n)$ avec $n \in \mathbb{N}$ issu d'un signal $x(n)$ tel que :
+
+\begin{equation}
+ y(n)=\frac{x(n)+x(n-1)+x(n-2)+...+x(n-N+1)}{N}
+\end{equation}
+
+La transformée en $Z$ de $y(n)$ s'écrit alors :
+
+\begin{eqnarray}
+ Y(z) & = & \sum_{p=0}^{N-1} X(z)\frac{z^{-p}}{N} \\
+      & = & X(z) \sum_{p=0}^{N-1}\frac{z^{-p}}{N}
+\end{eqnarray}
+
+On en déduit la fonction de transfert $H(z)$ du filtre équivalent :
+
+\begin{equation}
+ H(z)=\frac{Y(z)}{X(z)} = \sum_{p=0}^{N-1}\frac{z^{-p}}{N}
+\end{equation}
+
+\subsubsection{Le filtre passe-bas}
+
+Soit $x(n)$ un signal numérique quelconque de fréquence d'échantillonnage $f_e$. La loi récursive qui produit un filtrage passe-bas de fréquence de coupure $f_c$ pour obtenir le signal filtré $y(n)$ s'écrit :
+
+\begin{eqnarray}
+ y(n) & = & y(n-1) + a [x(n)- y(n-1)] \\
+ y(n) & = & a x(n)+[1-a] y(n-1) \\
+ y(n) + [a-1] y(n-1) & = & a x(n) \label{filtre_pb}
+\end{eqnarray}
+
+en ayant posé :
+
+\begin{equation*}
+ a = \frac{1}{1+\frac{f_e}{2 \pi f_c}}
+\end{equation*}
+
+En effectuant la transformée de Z de chaque membre de l'équation \ref{filtre_pb}, on obtient :
+
+\begin{eqnarray}
+  \sum_{n=-\infty}^{+\infty}y(n)z^{-n} + [a-1]  \sum_{n=-\infty}^{+\infty}y(n-1)z^{-n} & = & a \sum_{n=-\infty}^{+\infty}x(n)z^{-n} \\
+  \sum_{n=-\infty}^{+\infty}y(n)z^{-n} + [a-1]  \sum_{n=-\infty}^{+\infty}y(n)z^{-n-1} & = & a \sum_{n=-\infty}^{+\infty}x(n)z^{-n} \\
+  Y(z) + [a-1]  Y(z) . z^{-1} & = & a X(z) \\
+  \frac{Y(z)}{X(z)} = \frac{a}{1+(a-1)z^{-1}}
+\end{eqnarray}
+
+D'un point de vue pratique, c'est cette fonction qui permet d'implémenter - c'est à dire de mettre en oeuvre sous la forme d'un programme - la fonction de filtrage de type passe-bas dans un programme informatique. Dans le logiciel libre Octave\footnote{\url{http://www.octave.org}}, le code suivant permet par exemple de tester ce filtrage sur des signaux aléatoires à partir de la loi récursive mais aussi en utilisant la fonction \verb|filter| :
+
+\begin{verbatim}
+% Script Matlab / Octave pour tester une fonction de filtrage passe-bas.
+
+f0 = 20;
+f1 = 22050;
+t1 = 1;
+fe = 44100;
+fc = 3000;
+a = 1/(1+fe/(2*pi*fc));
+
+t = [0:1/fe:t1];
+n = length(t);
+N = 10;
+
+for k=1:N
+
+    s = randn(1,n);
+    %sweep = sin(2*pi*(f0*t1)/log(f1/f0) * (exp(t'/t1*log(f1/f0))-1))';
+    sf(1) = s(1);
+
+    % Avec une boucle
+    tic;
+    for i=2:n
+        sf(i)=a*s(i)+(1-a)*sf(i-1);
+    end
+    t_boucle(k) = toc;
+
+    % Avec filter
+    tic;
+    sff = filter(a,[1 a-1],s);
+    t_filter(k) = toc;
+
+    % Fonction de transfert
+    nfft = 16384;
+    fft_s = fft(s,nfft);
+    fft_sf = fft(sf,nfft);
+    fft_sff = fft(sff,nfft);
+    f = [0:fe/nfft:fe/2];
+    f(1) = [];
+
+    mod_FT(k,:) = abs(fft_sf)./abs(fft_s);
+    pha_FT(k,:) = angle(fft_sf);
+    mod_FTF(k,:) = abs(fft_sff)./abs(fft_s);
+    pha_FTF(k,:) = angle(fft_sff);
+
+end
+
+mod_FT = mean(mod_FT);
+figure(1)
+semilogx(f,20*log10(mod_FT(1:nfft/2)));
+hold on
+semilogx(f,20*log10(abs(1./(1+j*(f/fc)))),'r');
+title(['Module de la fonction de transfert par la methode recursive (reel / theorique)']);
+xlabel(['Frequence (Hz)']);
+ylabel(['Amplitude (dB)']);
+
+pha_FT = mean(pha_FT);
+figure(2)
+semilogx(f,unwrap(pha_FT(1:nfft/2)));
+xlabel(['Frequence (Hz)']);
+ylabel(['Phase (rad)']);
+title(['Phase de la fonction de transfert par la méthode recursive']);
+
+mod_FTF = mean(mod_FTF);
+figure(3)
+semilogx(f,20*log10(mod_FTF(1:nfft/2)));
+hold on
+semilogx(f,20*log10(abs(1./(1+j*(f/fc)))),'r');
+title(['Module de la fonction de transfert par la fonction filter (reel / theorique)']);
+xlabel(['Frequence (Hz)']);
+ylabel(['Amplitude (dB)']);
+
+pha_FTF = mean(pha_FTF);
+figure(4)
+semilogx(f,unwrap(pha_FTF(1:nfft/2)));
+xlabel(['Frequence (Hz)']);
+ylabel(['Phase (rad)']);
+title(['Phase de la fonction de transfert par la fonction filter']);
+
+figure(5)
+plot(t_boucle);
+title(['Temps d execution (s)']);
+hold on
+plot(t_filter,'r');
+
+pause;
+
+\end{verbatim}
+
+Pour plus d'exemple sur les fonctions numérique de filtrage, voir \url{http://math.fullerton.edu/mathews/c2003/ZTransformFilterMod.html}.
+
+\subsubsection{Le filtre vocal}
+
+On peut modéliser la sensation d'intensité auditive par un filtre. L'oreille humaine est particulièrement sensible entre 3 et 4 kHz.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{img/sens_oreille}
+    \caption{Diagramme de sensibilité de l'oreille humaine.}
+    \label{sens_oreille}
+\end{figure}
+
+On peut également modéliser la production phonatoire par un modèle source-filtre, où le rôle de la source est joué par les cordes vocales qui produisent un son harmonique avec une distribution de l'énergie assez plate en fréquence. Le conduit vocal, les fosses nasales ainsi que la place des articulateurs (langue, mâchoire, lèvres) peuvent être modélisés par un filtre qui modifie le son glottique pour produire le son tel que nous le percevons à la sortie des lèvres d'un locuteur.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{img/sf_voix}
+    \caption{Modèle source/filtre de la voix.}
+    \label{sf_voix}
+\end{figure}
+

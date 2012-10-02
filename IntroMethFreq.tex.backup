@@ -1,0 +1,386 @@
+\section{Le produit de convolution}
+
+On appelle produit de convolution \textbf{convolution} de $x(t)$ par $y(t)$ l'opération notée $x(t) \star y(t)$ et définie par :
+
+\begin{equation}\label{conv}
+ \boxeq{x(t)\star y(t) = \int_{-\infty}^{+\infty}x(u)y(t-u)\ud u = \int_{-\infty}^{+\infty}x(t-u)y(u)\ud u}
+\end{equation}
+
+L'impulsion de Dirac est l'élément neutre de la convolution. En effet :
+
+\begin{equation}
+x(t) \star \delta (t) = x(t)
+\end{equation}
+
+Lorsque l'on convolue un signal $x(t)$ à un Dirac situé à un temps $t_0$, cela revient à retarder le signal $x(t)$ de $t_0$ :
+
+\begin{equation}
+x(t) \star \delta (t-t_0) = x(t-t_0)
+\end{equation}
+
+Par ailleurs, si l'on multiplie un signal $x(t)$ par un Dirac situé à un temps $t_0$, cela revient à connaître la valeur que prend $x(t)$ en $t_0$ (comme si l'on relevait l'ordonnée d'un point particulier d'une courbe)
+
+\begin{equation}
+x(t) \cdot \delta  (t-t_0) = x(t_0)
+\end{equation}
+
+De même, lorsque l'on convolue un signal $x(t)$ à un peigne de Dirac (de période $T$), cela revient à << périodiser >>  le signal $x(t)$ tous les $nT$ : on retarde le signal $x(t)$ de $T$, de $2T$, de $3T$, etc...
+
+\begin{equation}
+x(t) \star \Psi_T (t)  =  \Sigma x(t-nT)
+\end{equation}
+
+Tandis que si on multiplie le signal $x(t)$ par un peigne de Dirac, on prélève des échantillons du signal $x(t)$ tous les $nT$. Comme vu au paragraphe \ref{sampling} cette opération correspond à l'\textbf{échantillonnage} du signal $x(t)$ telle que :
+
+\begin{equation}
+x(t) \cdot \Psi_T  (t)  =  \Sigma x(nT)
+\end{equation}
+
+De façon plus générale, la convolution telle qu'elle est définie par sa formule mathématique, revient à retourner temporellement un des deux signaux (par exemple $x(t)$)  puis à le déplacer sur tout l'axe du temps  et à sommer toutes les multiplications de ce signal au deuxième signal $y(t)$.
+
+Pour des exemples animé de l'effet du produit de convolution (très pédagogique !), voir : \\
+\url{http://www.jhu.edu/~signals/convolve/index.html} \\
+\url{http://www.jhu.edu/~signals/discreteconv2/index.html}
+
+%Retournement temporel $t$ est un instant qui varie du signal $x$	dans le temps $u$ de  $-$  à  $+$.
+%On fait « glisser » le signal $x(-u)$ selon l'axe du temps.
+%On multiplie $y(u)$ par $x(t-u)$  pour chaque position de $t$ sur l'axe du temps et on somme tous les produits effectués.
+
+
+\section{Rappels sur la décomposition en série de Fourier des signaux périodiques}
+
+Pour pouvoir analyser les signaux quelque soit leur nature, il est intéressant de chercher des transformations qui mettent en évidence les particularités de leur contenu temporel mais aussi fréquentiel. Joseph Fourier a démontré que tout signal \textbf{périodique} peut être décomposé en une somme de sinus et de cosinus élémentaires telle que :
+
+\begin{equation}\label{DecompFour}
+ \boxed{x(t)=a_0 + \sum_{n=1}^{+\infty}a_n\cos(2\pi n f_0 t)+\sum_{n=1}^{+\infty}b_n\sin(2\pi n f_0 t)}
+\end{equation}
+
+où $f_0$ est appelée la fréquence \textbf{fondamentale}. Sauf effet particulier ou paradoxal, elle correspond à la hauteur principale perçue d'un son. Les autres composantes sont des fréquences supérieures à la fondamentale ($n>1$) et sont appelées \textbf{harmoniques} du signal. Par exemple, dans le cas d'un son émis par un instrument de musique, la fondamentale va correspondre à la note jouée et les autres composantes vont correspondre à la << série harmonique >> de cette note (octave, puis quinte, puis octave, puis tierce, etc...). Cette série correspond à des rapports de fréquences (fondamental $f_0$, octave $= 2*f_0$, octave $+$ quinte $= 3*f_0$, etc...). Les harmoniques ne vont pas directement contribuer à la perception de la hauteur mais plutôt à la richesse du timbre du son. C'est par exemple la présence d'harmoniques, entre autres, qui permet de différentier une sinusoïde à $f_0$ d'une note de violon dont la fondamentale est à la même fréquence.
+
+
+\section{La transformée de Fourier}
+
+\subsection{Définition de la transformée de Fourier}
+
+La transformée de Fourier est une généralisation de la décomposition précedente aux signaux non-périodiques. Soit $x(t)$ un signal quelconque, on note $X(f)$ ou $TF(x(t))$ sa transformée de Fourier telle que :
+
+\begin{equation}\label{fourier}
+ \boxeq{X(f)=TF(x(t))=\int_{-\infty}^{+\infty}x(t)e^{-i2\pi f t} \ud t}
+\end{equation}
+
+Inversement, on peut définir une transformée de Fourier inverse $TF^{-1}$ telle que :
+
+\begin{equation}\label{fourier_inv}
+ \boxeq{x(t)=TF^{-1}(X(f))=\int_{-\infty}^{+\infty}X(f)e^{i2\pi f t} \ud f}
+\end{equation}
+
+$X(f)$ est une fonction complexe même si $x(t)$ est réel. La transformée de Fourier contient donc une partie réelle et une partie imaginaire et est représentée facilement grâce à son \textbf{module} et à son \textbf{argument} : $\vert X(f) \vert$ est appelé \textbf{spectre d'amplitude} et $\mathrm{arg}(X(f))$ le \textbf{spectre de phase} du signal. La variable $f$ s'appelle la fréquence dont l'unité est le Hertz (en abrégé : Hz).\\
+
+\textbf{Remarques importantes:}
+\begin{itemize}
+ \item La représentation complète d'une transformée de Fourier nécessite 2 graphiques : le module et la phase, ou bien la partie réelle et le partie imaginaire.
+ \item Pour représenter les transformées de Fourier de signaux, il est communément utilisé l'échelle logarithmique. Pour un signal acoustique, par exemple, on calcule $20\log(\vert X(f) \vert / 2.10^{-5})$ et $\mathrm{arg}(X(f))$.\\
+\end{itemize}
+
+Ainsi, la transformée de Fourier est un opérateur mathématique qui permet d'analyser et de représenter un signal dans le domaine fréquentiel. La $TF$ ne modifie pas le signal mais permet seulement de l'observer selon différents points de vue (temporel ou fréquentiel). Il est important de retenir que $x(t)$ et $X(f)$ sont deux descriptions équivalentes du même signal. Ces deux fonctions contiennent la même information il s'agit juste de deux descriptions dans des domaines différents.
+
+$X(f)$ apporte des informations sur le système physique à l'origine du signal. Elle permet par exemple de différentier un son de trompette d'un son trombone, ou bien encore différentes ondes cérébrales, plus facilement qu'en observant le signal dans le domaine temporel. Le \textbf{contenu spectral} d'un signal est en effet assimilable à sa << carte d'identité >>.
+
+
+\subsection{Propriétés de la transformée de Fourier}
+
+\begin{itemize}
+ \item \textbf{Linéarité} :
+
+\begin{equation}
+ \boxeq{a x(t)+b y(t) \Leftrightarrow a X(f)+b Y(f)}
+\end{equation}
+
+\item \textbf{Produit de convolution} :
+
+\begin{equation}
+ \boxeq{x(t).y(t) \Leftrightarrow   X(f) \star Y(f)}
+\end{equation}
+
+\begin{equation}
+ \boxeq{x(t) \star y(t)  \Leftrightarrow  X(f) . Y(f)}
+\end{equation}
+
+Une multiplication dans un domaine correspond ainsi à un produit de convolution dans l'autre.\\
+
+\item \textbf{Retard} :
+
+\begin{equation}
+ \boxeq{x(t-t_0)   \Leftrightarrow  X(f) e^{-2i\pi f t_0}}
+\end{equation}
+
+\begin{equation}
+ \boxeq{x(t) \cdot e^{2\pi f_0 t} \Leftrightarrow  X(f-f_0)}
+\end{equation}
+
+Un retard temporel correspond ainsi à un déphasage au niveau fréquentiel, et inversement.\\
+
+\item \textbf{Changement d'échelle} :
+
+\begin{equation}
+\boxeq{x(at) \Leftrightarrow \frac{1}{\vert a \vert} X \left(\frac{f}{a} \right)}
+\end{equation}
+
+\textbf{Démonstration.} Soient $x(t)$ et $y(t)$ deux fonctions temporelles avec $t \in \mathbb{R}$ telles que $y(t)=x(at)$ avec $a \in \mathbb{R}$. Leur transformées de Fourier dans l'espace des fréquences sont notées respectivement $X(f)$ et $Y(f)$. On a alors :
+
+\begin{eqnarray}
+ Y(f) & = & \int_{-\infty}^{+\infty} y(t)e^{-2j\pi f t} \ud t\\
+ & = & \int_{-\infty}^{+\infty} x(at)e^{-2j\pi f t} \ud t \label{dem_ft_ech}
+\end{eqnarray}
+
+Effectuons le changement de variable $u=at$, c'est-à-dire aussi $\ud u=a \ud t$, qui revient ici à un changement d'échelle. L'équation \ref{dem_ft_ech} devient :
+
+\begin{eqnarray}
+ Y(f) & = & \int_{-\infty}^{+\infty} x(u)e^{-\frac{2j\pi f u}{a}} \frac{\ud u}{a}\\
+ & = & \frac{1}{\vert a \vert} \int_{-\infty}^{+\infty} x(u) e^{-2j\pi \frac{f}{a}u} \ud u\\
+ & = & \frac{1}{\vert a \vert}X\left(\frac{f}{a}\right) \label{dem_ft_ech_2}
+\end{eqnarray}
+
+Cette loi montre que lorsqu'on diminue l'échelle temporelle d'un signal ($a>1$), l'échelle fréquentielle augmente. Par exemple, si $x(t)$ est une sinusoïde de fréquence $f_0$ telle que $x(t)=\sin(2\pi f_0 t)$, alors $X(f)=\delta(f_0)$, $y(t)=\sin(2\pi a f_0 t)$ et $Y(f)=\frac{1}{\vert a \vert}\delta(f_1)$ où $f_1=a f_0$ (cf. figure \ref{sinus_ech}). Le facteur supplémentaire $\frac{1}{\vert a \vert}$ provient du principe de conservation d'énergie appliqué dans le domaine fréquentiel.\\
+
+\begin{figure}[tp]
+    \centering
+    \subfigure[Représentation temporelle]{\includegraphics[width=8cm]{img/sinus_ech}}
+    \subfigure[Représentation fréquentielle]{\includegraphics[width=8cm]{img/sinus_ech_ft}}
+    \caption{Exemple d'application d'un facteur d'échelle $a=2$ sur un signal sinusoïdal $x(t)$ de fréquence $f_0=50\ \mathrm{Hz}$ tel que $x(t)=\sin(2\pi f_0 t)$.}
+    \label{sinus_ech}
+\end{figure}
+
+\item \textbf{Théorème de Parseval} :\\
+Soit $E$ l'énergie du signal. On peut démontrer que :
+
+\begin{equation}
+ \boxeq{E = \int_{-\infty}^{+\infty} \vert x(t) \vert^2 \ud t   =   \int_{-\infty}^{+\infty}    \vert X(f) \vert^2 \ud f}
+\end{equation}
+
+\end{itemize}
+
+
+\subsection{Les transformées de Fourier de signaux courants}
+
+\begin{itemize}
+\item Dirac $\delta(t) \Leftrightarrow $ signal unité
+\item Signal porte  $\Leftrightarrow$ sinus cardinal
+\item $\sin(2\pi f_0 t)  \Leftrightarrow  \frac{1}{2}[\delta(f-f_0)  + \delta(f+f_0)]$
+\item la suite en cours...
+\end{itemize}
+
+
+\subsection{La fonction de densité spectrale d'énergie}
+
+La fonction de densité spectrale d'énergie est la $TF$ de la fonction d'autocorrélation vue au paragraphe \ref{intercorr}. Elle décrit la répartition de l'énergie en fréquence et on a :
+
+
+\begin{equation}\label{PSD}
+\Phi_{x}(f)= TF (\varphi_x(\tau))=\vert X(f) \vert ^2
+\end{equation}
+
+
+\section{L'échantillonnage}\label{signum}
+
+Les signaux numériques dérivent d 'un signal analogique par \textbf{échantillonnage}. L'échantillonnage est une opération qui consiste à prélever sur un signal à temps continu une suite de valeurs, prises en une suite d'instants $t_n$, $n\in \mathbb{Z}$. Dans la suite nous n'envisagerons que l'échantillonnage est régulier, \cad que $t_n$ = $nT$.
+
+Aujourd'hui l'intérêt grandissant pour la conversion de signaux analogiques en signaux numériques tient au fait qu'il devient de plus en plus simple d'appliquer des algorithmes d'analyse complexe avec l'aide des processeurs numériques. En sciences physiques par exemple, il est fréquent que les résultats expérimentaux soient sous forme d'une suite de valeurs numériques. Les possibilités d'application du traitement numérique des signaux sont d'autant plus nombreuses que la vitesse de calcul des microprocesseurs est élevée. Pour caractériser et traiter un tel signal numérique on peut utiliser les même concepts mathématiques que pour les signaux continus, à condition de les adapter aux contexte numérique.
+
+
+\subsection{Définition de l'échantillonnage}\label{sampling}
+
+Le signal continu (analogique) peut être échantillonné (\cad discrétisé) à une \textbf{fréquence d'échantillonnage} $f_e$ inverse de la \textbf{période d'échantillonnage} $T_e$ telle que $f_e= 1/T_e$. Cette échantillonage revient à multiplier le signal analogique par un peigne de Dirac de période $T_e$.
+
+Le signal échantillonné peut alors s'écrire :
+
+\begin{equation}
+ x_e(t)=x_a(t) \cdot \sum_{n=-\infty}^{+\infty} \delta (t-nT_e).
+\end{equation}
+
+$x_e(t)$ est donc nul partout sauf en $t= nTe$, $n$ variant de $-\infty$ à $+\infty$. C'est pourquoi par la suite, on ne simplifie cette notation en réduisant $x_e(t)$ non plus à un signal continu possédant une infinité de valeurs mais à une suite d'échantillons discrets $x(n)$, où $n$ correspond au numéro de l'échantillon.
+
+\begin{equation}
+ x(n) = x_e ( n T_e )
+\end{equation}
+
+\subsection{La quantification}
+
+Voir cours.
+
+
+\section{La transformée de Fourier à temps discret}
+
+Dans le cas des signaux échantillonnés où le temps est discrétisé, il n'est plus nécessaire d'utiliser des intégrales continues pour sommer les valeurs de $x(t)$ sur tout l'axe des temps, puisqu'un signal échantillonné peut être assimilé à une suite contenant un nombre \textbf{fini} d'éléments . On peut donc définir la transformée de Fourier d'un signal numérique par :
+
+\begin{equation}\label{TFD}
+ X(f)=\sum_{n=-\infty}^{+\infty}x(n)e^{-2j\pi n f}
+\end{equation}
+
+La transformée de Fourier inverse se retrouve de la même manière que dans le cas continu :
+
+\begin{equation}\label{TFDinv}
+ x(n)=\int_{-\frac{1}{2}}^{\frac{1}{2}}X(f)e^{2j\pi n f}\ud f
+\end{equation}
+
+De la même façon qu'en continu, la TF présente certaines propriétés intéressantes :
+
+\begin{itemize}
+ \item \textbf{Retard} : $$x(n-n_0) \Leftrightarrow  X(f) e^{-2j\pi n_0 f}$$\\
+ \item \textbf{Produit de convolution} :
+ $$x(n)\star y(n) \Leftrightarrow X(f) . Y(f)$$\\
+ et \\
+ $$x(n).y(n) \Leftrightarrow X(f) \star Y(f)$$\\
+ \end{itemize}
+
+ avec,
+
+ \begin{equation}\label{conv_disc}
+  x(n) \star y(n)  =  \sum_{-\infty}^{+\infty}x(k) y(n-k) = \sum_{-\infty}^{+\infty}x(n-k) y(k)
+ \end{equation}
+
+
+\section{Le théorème de Shannon}
+
+La discrétisation temporelle du signal analogique détaillée à la section \ref{signum} n'est pas sans conséquences vis-à-vis des propriétés spectrales du signal échantillonné. Ainsi une mauvaise adéquation entre les fréquences contenues dans le signal et la fréquence d'échantillonnage peut être destructrice.
+
+En posant $x_e(t) = x_a(t).\sum \delta(t- nT_e)$ le signal échantillonné du signal analogique $x_a(t)$ et $X_e(f)$ sa transformée de Fourier, on obtient :
+
+\begin{equation}
+ X_e(f)=\frac{1}{T}\sum_{-\infty}^{+\infty}X_a(f-\frac{n}{T})
+\end{equation}
+
+Comme le schématise la figure \ref{sch_ech}, l'échantillonnage d'un signal analogique à la fréquence d'échantillonnage $F_e = 1/T$ induit une périodisation de son spectre dans le domaine fréquentiel (tous les $f =n/T$, $n$ étant entier).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{img/cons_ech_01}
+    \caption{Lien entre la fréquence d'échantillonnage d'un signal et la périodisation de son spectre.}
+    \label{sch_ech}
+\end{figure}
+
+
+Il peut survenir un problème si la fréquence d'échantillonnage $F_e$ est trop petite car les « répliques » périodiques du spectre  peuvent se superposer partiellement comme le montre la figure \ref{sch_repli}.
+
+\vspace{5mm}
+
+\begin{figure}[h]
+     \centering
+     \includegraphics[width=12cm]{img/repliement}
+     \caption{Phénomène de repliement.}
+     \label{sch_repli}
+\end{figure}
+
+
+Cela arrive si la borne supérieure d'un élément de $X_a(f)$ est plus grande que la borne inférieure de l'élement suivant, autrement dit si $B > \frac{1}{T} - B$ où $B$ est la fréquence maximale contenue dans le signal (cf. fig. \ref{sch_repli}).
+
+Ainsi, pour que le spectre $X_a(f$) ne soit pas « déformé » lors de sa périodisation, il faut donc que :
+
+\begin{equation}\label{shannon}
+ \boxeq{Fe < 2 B}
+\end{equation}
+
+Cette condition constitue le \textbf{théorème de Shannon} énoncé ainsi : <<~la fréquence d'échantillonnage d'un signal doit être égale ou supérieure au double de la fréquence maximale contenue dans ce signal~>>.
+
+
+\section{La transformée en Z}
+
+\subsection{Définition de la transformée en Z}
+
+Pour décrire un filtre dans le domaine numérique, il est pratique de définir une transformée dont la variable a la même nature que celle du signal discrétisé. En effet, un signal numérique - discontinu de nature - ne comporte qu'un nombre fini de valeurs et on a besoin d'une transformée à temps discret pour décrire les filtres : la transformée en $Z$.
+
+Soit $x(n)$ un signal discret quelconque. Sa transformée en Z s'écrit :
+
+\begin{equation}
+X(z) = \mathcal{Z}\{x(n)\} =\sum_{n=-\infty}^{+\infty}x(n)z^{-n},\quad z \in \{z\in\mathbb{C}|\sum_{n=-\infty}^{+\infty}x(n)z^{-n} \quad converge\}
+\end{equation}
+
+Remarque : on retrouve la définition de la transformée de Fourier en posant $z = e^{j2\pi f}$.
+
+\subsection{Existence de la transformée en Z}
+
+Le domaine de convergence est le sous-ensemble de $\mathbb{C}$ dans lequel la série converge.
+Autrement dit, le domaine de convergence de la transformée en z de la suite ($x_{n})_{n\in\mathbb{Z}}$ est l'ensemble :
+
+\begin{equation}
+\left\{z\in\mathbb{C} | \sum_{n=-\infty}^{\infty}x_{n}z^{-n} \quad\mathrm{existe}\right \}
+\end{equation}
+
+On l'appelle également couronne de convergence. En effet, en posant $z=\rho e^{i\theta}~$, il vient :
+
+\begin{equation}
+|X(z)|=\left| \sum_{n=-\infty}^{\infty}x_{n}z^{-n}\right|\leq \sum_{n=-\infty}^{\infty}\left|x_{n}\right|\rho^{-n}
+\end{equation}
+
+Donc $X(z)$ existe si $x(n)$ a une croissance au plus exponentielle, auquel cas le domaine de convergence est compris dans une couronne :
+
+\begin{itemize}
+\item de petit rayon le majorant de la base du côté des n négatifs
+\item de grand rayon le majorant de la base du côté des n positifs
+\end{itemize}
+
+Dans toute la suite de l'article, les transformées en Z ne seront valables que dans ce domaine de convergence sans que cela soit reprécisé.
+
+\subsection{Propriétés de la transformée en Z}
+
+\begin{enumerate}
+\item\textbf{ Linéarité}
+La transformée en Z d'une combinaison linéaire de deux signaux est la combinaison linéaire des transformées en Z de chaque signal.
+
+\begin{equation}
+  \mathcal{Z}\{a_1 x_1(n) + a_2 x_2(n)\} = a_1 \mathcal{Z}\{x_1(n)\} + a_2 \mathcal{Z}\{x_2(n)\}
+\end{equation}
+
+\item \textbf{Décalage temporel}
+
+Le décalage temporel d'un signal de k échantillons se traduit par la multiplication de la transformée en Z du signal par $z^k$.
+
+\begin{equation}
+\mathcal{Z}\{x(n-k)\} = z^{-k}\mathcal{Z}\{x(n)\}
+\end{equation}
+
+\item \textbf{Convolution}
+
+La transformée en Z d'un produit de convolution est le produit des transformées en Z
+
+\begin{equation}
+\mathcal{Z}\{x(n) \star y(n)\} = \mathcal{Z}\{x(n)\} \mathcal{Z}\{y(n)\} \                                                                      \end{equation}
+
+\item \textbf{Multiplication par une exponentielle}
+
+\begin{equation}
+\mathcal{Z}\{a^{n}x(n)\} = X\left(\frac{z}{a}\right)
+\end{equation}
+
+\item \textbf{Multiplication par la variable d'évolution}
+
+De façon générale :
+
+\begin{equation}
+\mathcal{Z}\{n^{k}x(n)\} = \left(-z \frac{\mathrm{d} }{\mathrm{d}z}\right)^{k}\mathcal{Z}\{x(n)\}\                                               \end{equation}
+
+où $\textstyle\left(-z \frac{\mathrm{d} }{\mathrm{d}z}\right)^{k}\mathcal{Z}\{x(n)\}$ signifie que l'on applique $k$ fois à $\mathcal{Z}\{x(n)\} l'opérateur \textstyle -z\frac{\mathrm{d} }{\mathrm{d}z}$
+
+Si l'on écrit cette formule au rang k=1, on obtient la formule de dérivation :
+
+\begin{equation}
+\mathcal{Z}\{nx(n)\} = -z \frac{\mathrm{d} }{\mathrm{d}z}X(z)\
+\end{equation}
+
+\item \textbf{Théorème de la valeur initiale}
+
+Soit $x(n)$\, un signal causal et $X(z)$\, sa transformée en Z. Alors :
+
+\begin{equation}
+x(0) = \lim_{n \to 0}x(n)=\lim_{z \to +\infty}X(z)
+\end{equation}
+
+\item \textbf{Théorème de la valeur finale}
+
+Soit $x(n)$, un signal causal et $X(z)$, sa transformée en Z. Alors lorsque la limite existe, on peut écrire :
+
+\begin{equation}
+\lim_{n \to +\infty}x(n)=\lim_{z \to 1}(z-1)X(z)
+\end{equation}
+
+\end{enumerate}

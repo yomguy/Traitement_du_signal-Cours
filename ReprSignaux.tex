@@ -1,0 +1,126 @@
+\section{Fenêtrage des signaux}
+
+Nous avons vu dans le chapitre précédent que la Transformée de Fourier permet de représenter le spectre d'un signal dans le domaine fréquentiel. Pour une sinusoïde infinie, toute l'énergie du spectre est concentrée à une fréquence donnée, c'est à dire la fréquence de la sinusoïde (cf. fig. \ref{ft_sin}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/ft_sin}
+    \caption{Représentation temporelle et spectre d'une sinusoïde dit << son pur >>.}
+    \label{ft_sin}
+\end{figure}
+
+Si on veut observer ce sinus sur un temps fini, on va être obligé de le tronquer. L'énergie va alors d'une part se répartir autour de la fréquence de la sinusoïde. C'est ce qu'on appelle l'\textbf{étalement spectral}. D'autre part, on observe la présence d'énergie dans toutes les fréquences. Ce phénomène est appelé \textbf{fuite spectrale} (cf. fig. \ref{ft_sin_01}). L'étalement et fuite sont directement liés à la troncature.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{img/ft_sin_01}
+    \caption{Représentation temporelle et spectre d'une sinusoïde tronquée.}
+    \label{ft_sin_01}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{img/ft_sin_fen}
+    \caption{Représentation temporelle et spectre d'une sinusoïde modulée par une fenêtre de Hanning.}
+    \label{ft_sin_fen}
+\end{figure}
+
+Si on réalise la troncature de façon non rectangulaire mais en « fenêtrant » le signal - par une fenêtre de Hanning par exemple, (cf.  fig. \ref{ft_sin_fen}) - les transitions dans le signal sont alors plus douces. La fuite spectrale est alors limitée mais l'étalement en fréquence est toujours présent. Ce point est important pour comprendre le rôle des \textbf{fenêtres d'analyse}. Si la fenêtre a des discontinuités fortes, les fuites spectrales vont être importantes, mais l'étalement moindre. Si on prend une fenêtre de discontinuité plus douce, on va au contraire obtenir un étalement plus grand, mais moins de fuites spectrales.
+
+
+\section{Le spectrogramme}
+
+L'intérêt du spectrogramme est de pouvoir représenter le spectre en évoluant dans le temps. Le nom scientifique de la fonction mathématique associée à cet outil, plus communément appelé « spectrogramme », est la Transformée de Fourier à Court Terme (TFCT). Ce nom provient de l'analyse effectuée sur des fenêtres de support temporel fini. Une autre dénomination de cette représentation est « sonagramme ». Il s'agit d'une marque déposée Kay Electronics.
+
+Le principe du spectrogramme est de « découper » le son en trames. Pour chacune de ces trames on calcule une transformée de Fourier comme le schématise la figure \ref{tfct}. Ce spectre est alors représenté à un temps correspondant à celui du centre de la fenêtre, sous forme d'un code de couleur.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/tfct}
+    \caption{Description schématique de l'analyse temps/fréquence par la FFT.}
+    \label{tfct}
+\end{figure}
+
+La figure \ref{spectr_voix1} montre un exemple de spectrogramme d'un échantillon sonore de voix chantée. Il s'agit d'un glissando C5-E5 réalisé par une soprano. L'analyse a été effectuée avec une fenêtre de Hanning de longueur 23 ms. Le jaune correspond aux amplitudes les plus fortes, le bleu/violet aux amplitudes les plus faibles. On a ainsi une idée de l'aspect du spectre au temps t. A chaque calcul du spectre, le signal est fenêtré de façon à pouvoir régler à la fois la fuite et l'étalement spectral. On observe facilement le glissando et le vibrato de la chanteuse.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/spectr_voix1}
+    \caption{Spectrogramme d'un glissando C5-E5 réalisé par une soprano (fenêtre : Hanning, 6 ms de largeur).}
+    \label{spectr_voix1}
+\end{figure}
+
+Pour mesurer le vibrato par exemple, on serait tenté de réduire la longueur de la fenêtre dans le temps pour gagner en précision et suivre au mieux les variations du spectre. En réalité, si on réduit la longueur des fenêtres (cf. fig. \ref{spectr_fen}), l'étalement spectral augmente, par conséquent la largeur des raies sur le spectrogramme aussi, ce qui perturbe finalement la mesure, car on ne distingue plus distinctement les différentes trajectoires dans le spectrogramme.
+
+\begin{figure}[tp]
+    \centering
+    \subfigure[Fenêtre de 100 ms]{\includegraphics[width=8cm]{img/spectrogram_01.png}}
+    \subfigure[Fenêtre de 20 ms]{\includegraphics[width=8cm]{img/spectrogram_02.png}}
+    \caption{Effet de la modification de la largeur d'une fenêtre temporelle lors du calcul d'un spectrogramme sur un signal contenant un vibrato.}
+    \label{spectr_fen}
+\end{figure}
+
+Si on revient à la même longueur de fenêtre que dans le premier exemple, tout en utilisant une fenêtre rectangulaire au lieu de la fenêtre « douce » de Hanning, l'étalement spectral est plus faible et les lignes sur le spectrogramme plus fines. Dans ce cas, les fuites spectrales sont beaucoup plus importantes et caractérisées par un manque de contraste dans la représentation du spectrogramme (cf. fig. \ref{spectr_fen_2}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/spectrogram_03.png}
+    \caption{Spectrogramme d'un glissando C5-E5 réalisé par une soprano (fenêtre : rectangulaire, 23 ms de largeur).}
+    \label{spectr_fen_2}
+\end{figure}
+
+Les points importants quant à l'utilisation du spectrogramme sont donc:
+\begin{itemize}
+ \item la longueur de fenêtre pour ajuster la précision temporelle, au prix d'un étalement spectral qui peut devenir rédhibitoire,
+ \item le choix de la fenêtre qui va conditionner le contraste du spectrogramme, pour une longueur de fenêtre donnée.
+\end{itemize}
+
+
+\section{Pertinence et choix d'un mode de représentation}
+
+La représentation du signal en temporel est particulièrement adapté à l'analyse de ses variations temporelles, par exemple lors de l'attaque ou de l'extinction d'un son. Au contraire, cette représentation apporte peu d'information lorsqu'on s'intéresse plutôt au contenu spectral du signal. Sur la figure \ref{spectr_voix2}, on voit que la représentation spectrale de ces deux signaux de parole permet assez bien de différentier la voix « tendue »  de la voix « relâchée ».
+
+\begin{figure}[tp]
+    \centering
+    \subfigure[Voix relâchée]{\includegraphics[width=8cm]{img/spectro_vibrato.png}}
+    \subfigure[Voix tendue]{\includegraphics[width=8cm]{img/spectro_vibrato_2.png}}
+    \caption{Spectrogrammes d'un son de voix relâchée (A) et d'une voix tendue (B).}
+    \label{spectr_voix2}
+\end{figure}
+
+Un autre intérêt de la représentation du signal à l'aide d'un spectrogramme est de pouvoir séparer des sources sonores, \cad des structures, ou, tout du moins, de pouvoir repérer des événements comme le montre la figure \ref{spectr_sep} où l'on distingue deux structures spectrales distinctes.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/spectr_sep.pdf}
+    \caption{Identification de structures sonores à l'aide d'un spectrogramme.}
+    \label{spectr_sep}
+\end{figure}
+
+
+Pour des sons très harmoniques, une voix chantée par exemple, le spectrogramme permet de repérer très facilement la fondamentale ainsi que la série harmonique. La figure \ref{spectro_harm} représente le spectrogramme d'un chanteur effectuant un glissando du bas au haut de sa tessiture puis l'inverse. On distingue facilement l'évolution temporelle de chaque harmonique contenu dans le signal.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/spectro_harm.png}
+    \caption{Identification de l'évolution temporelle des harmoniques à l'aide d'un spectrogramme.}
+    \label{spectro_harm}
+\end{figure}
+
+Dans le cas de la voix parlée, on peut repérer les parties voisée - harmoniques ou non - et même identifier quels sont les phonèmes prononcés avec un peu d'expérience. Cette technique permet par exemple d'améliorer les algorithme de reconnaissance vocale (cf. fig. \ref{spec_lux}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=12cm]{img/spec_lux.png}
+    \caption{Identification de mots à l'aide d'un spectrogramme. Phrase : << C'est une maison qui s'trouve au Luxembourg >>.}
+    \label{spec_lux}
+\end{figure}
+
+
+\section{Le spectre moyenné (Long Term Average Spectrum LTAS)}
+
+Dans certains cas, il est également très utile de représenter une partie du signal sous forme de spectre moyenné. Le spectre moyenné consiste à faire la moyenne du spectrogramme sur l'ensemble des instants d'un intervalle de temps. Cette opération peut être effectuée sur le signal tout entier comme sur un morceau particulier.
+
+Pour examiner une voyelle en particulier dans un signal de parole par exemple, il est tout à fait approprié de moyenner le spectrogramme sur l'intervalle de temps de cette voyelle, de façon à pouvoir estimer les formants ou bien le contenu spectral de cette voyelle. Ainsi, sur la figure suivante, on peut examiner le spectre moyenné de la production vocale d'un chanteur sur un /a/. Cette représentation permet de caractériser ses premiers formants vocaliques, ainsi que le formant du chanteur (renforcement énergétique dans la zone 2000-4000 Hz) caractéristique des chanteurs lyriques et des acteurs de théâtre.
+
+

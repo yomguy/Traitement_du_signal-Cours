@@ -1,0 +1,32 @@
+<!DOCTYPE kmpdoc>
+<kmpdoc version="2" >
+    <axes width="5" tic-width="1" color="#000000" tic-legth="10" >
+        <show-axes>1</show-axes>
+        <show-arrows>1</show-arrows>
+        <show-label>1</show-label>
+        <show-frame>1</show-frame>
+        <show-extra-frame>1</show-extra-frame>
+        <xcoord>4</xcoord>
+        <xmin>-24</xmin>
+        <xmax>24</xmax>
+        <ycoord>4</ycoord>
+        <ymin>-0.5</ymin>
+        <ymax>1.2</ymax>
+    </axes>
+    <grid width="1" color="#c0c0c0" >
+        <mode>0</mode>
+    </grid>
+    <scale>
+        <tic-x>8</tic-x>
+        <tic-y>8</tic-y>
+        <print-tic-x>3</print-tic-x>
+        <print-tic-y>3</print-tic-y>
+    </scale>
+    <function width="1" use-slider="-1" color="#0000ff" visible="1" >
+        <equation>f(x)=sin(x)/x</equation>
+    </function>
+    <fonts>
+        <axes-font>Sans Serif</axes-font>
+        <header-table-font>Sans Serif</header-table-font>
+    </fonts>
+</kmpdoc>

@@ -1,0 +1,46 @@
+\NeedsTeXFormat{LaTeX2e}
+%\usepackage{tex4ht}
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{./exam_profil}
+\setlinespacing{1.0}
+%\graphicspath{{/figures}}
+
+\begin{document}
+
+%\renewenvironment{theindex}{\section{\indexname}
+%\begin{itemize}}{\end{itemize}}
+
+
+\begin{floatingfigure}[l]{3cm}
+ \includegraphics[width=3cm]{img/logo_cnam}
+\end{floatingfigure}
+
+\rule{13cm}{0.5mm}\\
+\vspace{-0.5cm}
+\begin{center}
+\Large{\bf{C.P.D.A.}}\\
+\Large{Centre de Préparation au}\\
+\Large{Diplôme d'Etat d'Audioprothésiste}\\
+\smallskip
+\large{Cours de $3^{e}$ année - 2006/2007}\\
+\smallskip
+\large{\bf{Traitement du signal - Fiche transformée en Z}}\\
+\large{G. Pellerin}\\
+\end{center}
+\vspace{-4mm}
+\rule{13cm}{0.5mm}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{img/TZ_sign_elem}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{img/TZ_prop}
+\end{figure}
+
+
+\end{document}
+

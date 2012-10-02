@@ -1,0 +1,48 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Les signaux}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Pr\'eambule}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}Classification des signaux}{6}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Classification dimensionnelle}{6}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Classification ph\'enom\'enologique}{6}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Classification morphologique}{6}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Classification \'energ\'etique}{7}{subsection.1.2.4}
+\contentsline {section}{\numberline {1.3}Signaux et distributions classiques}{7}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Fen\^etre rectangulaire ou Porte}{7}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Impulsion de Dirac}{7}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}<<\IeC {\nobreakspace }Peigne\IeC {\nobreakspace }>> de Dirac}{8}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Sinus cardinal}{8}{subsection.1.3.4}
+\contentsline {section}{\numberline {1.4}Evaluation de la similitude entre deux signaux}{8}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Les fonctions d'inter-corr\'elation et d'auto-corr\'elation}{8}{subsection.1.4.1}
+\contentsline {chapter}{\numberline {2}Transform\'ees de signaux}{10}{chapter.2}
+\contentsline {section}{\numberline {2.1}Le produit de convolution}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Rappels sur la d\'ecomposition en s\'erie de Fourier des signaux p\'eriodiques}{11}{section.2.2}
+\contentsline {section}{\numberline {2.3}La transform\'ee de Fourier}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}D\'efinition de la transform\'ee de Fourier}{11}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Propri\'et\'es de la transform\'ee de Fourier}{12}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Les transform\'ees de Fourier de signaux courants}{13}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}La fonction de densit\'e spectrale d'\'energie}{13}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}L'\'echantillonnage}{14}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}D\'efinition de l'\'echantillonnage}{14}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}La quantification}{14}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}La transform\'ee de Fourier \`a temps discret}{14}{section.2.5}
+\contentsline {section}{\numberline {2.6}Le th\'eor\`eme de Shannon}{15}{section.2.6}
+\contentsline {section}{\numberline {2.7}La transform\'ee en Z}{16}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}D\'efinition de la transform\'ee en Z}{16}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Existence de la transform\'ee en Z}{16}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Propri\'et\'es de la transform\'ee en Z}{17}{subsection.2.7.3}
+\contentsline {chapter}{\numberline {3}Syst\`emes lin\'eaires et filtrage}{19}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{19}{section.3.1}
+\contentsline {section}{\numberline {3.2}R\'eponse impulsionnelle d'un syst\`eme}{19}{section.3.2}
+\contentsline {section}{\numberline {3.3}R\'eponse fr\'equentielle d'un syst\`eme}{20}{section.3.3}
+\contentsline {section}{\numberline {3.4}Filtrage}{20}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Filtres classiques - vocabulaire}{21}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Filtres num\'eriques}{21}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Exemples de filtres}{22}{subsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.3.1}Le filtre moyenneur lisseur}{22}{subsubsection.3.4.3.1}
+\contentsline {subsubsection}{\numberline {3.4.3.2}Le filtre passe-bas}{22}{subsubsection.3.4.3.2}
+\contentsline {subsubsection}{\numberline {3.4.3.3}Le filtre vocal}{25}{subsubsection.3.4.3.3}
+\contentsline {chapter}{\numberline {4}Modes de repr\'esentation des signaux}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Fen\^etrage des signaux}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}Le spectrogramme}{29}{section.4.2}
+\contentsline {section}{\numberline {4.3}Pertinence et choix d'un mode de repr\'esentation}{31}{section.4.3}
+\contentsline {section}{\numberline {4.4}Le spectre moyenn\'e (Long Term Average Spectrum LTAS)}{34}{section.4.4}

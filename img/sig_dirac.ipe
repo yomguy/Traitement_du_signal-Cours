@@ -1,0 +1,28 @@
+<ipe version="60028" creator="Ipe 6.0 preview 28">
+<info created="D:20070319172651" modified="D:20070319173636" bbox="cropbox"/>
+<page gridsize="16">
+<layer name="alpha"/>
+<layer name="beta"/>
+<view layers="alpha beta" active="beta"/>
+<path layer="alpha" stroke="black" matrix="0.521739 0 0 1 189.913 0" pen="normal" arrow="normal">
+96 192 m
+464 192 l
+</path>
+<path stroke="black" matrix="1 0 0 0.625 0 94" pen="normal" arrow="normal">
+288 80 m
+288 336 l
+</path>
+<text layer="beta" stroke="black" matrix="1 0 0 1 32 -16" pos="416 208" type="label" width="4.5523" height="7.3534" depth="0" valign="baseline" size="large" style="default">t</text>
+<text stroke="black" matrix="1 0 0 1 0 16" pos="304 256" type="label" width="5.853" height="7.7044" depth="0" valign="baseline" size="large" style="default">1</text>
+<text stroke="black" pos="272 176" type="label" valign="baseline" size="large" style="default">0</text>
+<path stroke="black" pen="fat" arrow="normal">
+352 192 m
+352 256 l
+</path>
+<text stroke="black" pos="352 176" type="label" valign="baseline" size="large" style="default">$f_0$</text>
+<path stroke="black" dash="dashed" pen="normal">
+288 256 m
+384 256 l
+</path>
+</page>
+</ipe>
