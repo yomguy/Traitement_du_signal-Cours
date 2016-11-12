@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif .dvi
 kileprversion=2
 kileversion=2.0.85
-lastDocument=SystLinFilt.tex
+lastDocument=IntroMethFreq.tex
 masterDocument=
 name=signal-cpda
 pkg_extIsRegExp=false
@@ -94,10 +94,10 @@ order=0
 
 [item:IntroMethFreq.tex]
 archive=true
-column=12
+column=1
 encoding=ISO-8859-15
 highlight=LaTeX
-line=273
+line=297
 mode=LaTeX
 open=true
 order=2
@@ -151,8 +151,8 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:IntroMethFreq.tex]
-CursorColumn=12
-CursorLine=273
+CursorColumn=1
+CursorLine=297
 
 [view-settings,view=0,item:ReprSignaux.tex]
 CursorColumn=0

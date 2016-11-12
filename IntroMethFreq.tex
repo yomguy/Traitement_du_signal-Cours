@@ -109,7 +109,7 @@ Une multiplication dans un domaine correspond ainsi à un produit de convolution 
 \end{equation}
 
 \begin{equation}
- \boxeq{x(t) \cdot e^{2\pi f_0 t} \Leftrightarrow  X(f-f_0)}
+ \boxeq{x(t) \cdot e^{2i\pi f_0 t} \Leftrightarrow  X(f-f_0)}
 \end{equation}
 
 Un retard temporel correspond ainsi à un déphasage au niveau fréquentiel, et inversement.\\
@@ -123,15 +123,15 @@ Un retard temporel correspond ainsi à un déphasage au niveau fréquentiel, et inv
 \textbf{Démonstration.} Soient $x(t)$ et $y(t)$ deux fonctions temporelles avec $t \in \mathbb{R}$ telles que $y(t)=x(at)$ avec $a \in \mathbb{R}$. Leur transformées de Fourier dans l'espace des fréquences sont notées respectivement $X(f)$ et $Y(f)$. On a alors :
 
 \begin{eqnarray}
- Y(f) & = & \int_{-\infty}^{+\infty} y(t)e^{-2j\pi f t} \ud t\\
- & = & \int_{-\infty}^{+\infty} x(at)e^{-2j\pi f t} \ud t \label{dem_ft_ech}
+ Y(f) & = & \int_{-\infty}^{+\infty} y(t)e^{-2i\pi f t} \ud t\\
+ & = & \int_{-\infty}^{+\infty} x(at)e^{-2i\pi f t} \ud t \label{dem_ft_ech}
 \end{eqnarray}
 
 Effectuons le changement de variable $u=at$, c'est-à-dire aussi $\ud u=a \ud t$, qui revient ici à un changement d'échelle. L'équation \ref{dem_ft_ech} devient :
 
 \begin{eqnarray}
- Y(f) & = & \int_{-\infty}^{+\infty} x(u)e^{-\frac{2j\pi f u}{a}} \frac{\ud u}{a}\\
- & = & \frac{1}{\vert a \vert} \int_{-\infty}^{+\infty} x(u) e^{-2j\pi \frac{f}{a}u} \ud u\\
+ Y(f) & = & \int_{-\infty}^{+\infty} x(u)e^{-\frac{2i\pi f u}{a}} \frac{\ud u}{a}\\
+ & = & \frac{1}{\vert a \vert} \int_{-\infty}^{+\infty} x(u) e^{-2i\pi \frac{f}{a}u} \ud u\\
  & = & \frac{1}{\vert a \vert}X\left(\frac{f}{a}\right) \label{dem_ft_ech_2}
 \end{eqnarray}
 
@@ -295,7 +295,7 @@ Remarque : on retrouve la définition de la transformée de Fourier en posant $z =
 
 Le domaine de convergence est le sous-ensemble de $\mathbb{C}$ dans lequel la série converge.
 Autrement dit, le domaine de convergence de la transformée en z de la suite ($x_{n})_{n\in\mathbb{Z}}$ est l'ensemble :
-
+	
 \begin{equation}
 \left\{z\in\mathbb{C} | \sum_{n=-\infty}^{\infty}x_{n}z^{-n} \quad\mathrm{existe}\right \}
 \end{equation}
