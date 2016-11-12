@@ -1,6 +1,6 @@
 \documentclass[pdftex,11pt,a4paper,twoside]{report}
 
-\usepackage{pdf_course_profile}
+\usepackage{sty/pdf_course_profile}
 
 %\title{Cours d'électricité}
 
@@ -23,7 +23,7 @@
 	\begin{center}
     \small{
     $^1$ Laboratoire d'Acoustique, Conservatoire National des Arts et Métiers\\
-    5 rue du Vert Bois F-75003 Paris\\ <\href{mailto:guillaume.pellerin@parisson.com}{guillaume.pellerin@parisson.com}>\\
+    <\href{mailto:guillaume.pellerin@parisson.com}{guillaume.pellerin@parisson.com}>\\
      \vspace{0.5cm}
     }
     \end{center}}
@@ -33,28 +33,28 @@
 \maketitle
 
 \newpage
-\include{Abstract}
+\include{tex/Abstract}
 
 \tableofcontents
 \cleardoublepage
 \renewcommand{\labelitemi}{$\bullet$}
 
 \chapter{Les signaux}
-\input{Signaux}
+\input{tex/Signaux}
 
 \chapter{Transformées de signaux}
-\input{IntroMethFreq}
+\input{tex/IntroMethFreq}
 
 \chapter{Systèmes linéaires et filtrage}
-\input{SystLinFilt}
+\input{tex/SystLinFilt}
 
 \chapter{Modes de représentation des signaux}
-\input{ReprSignaux}
+\input{tex/ReprSignaux}
 
 \newpage
 \bibliographystyle{plain}
 \nocite{*}
-\bibliography{biblio}
+\bibliography{bib/biblio}
 
 \end{document}
 
